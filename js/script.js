@@ -1,19 +1,13 @@
-let money = 100000,
-    income = 99000,
-    addExpenses = 'Проезд, Обед, Подписка, Обучение',
-    deposit = false,
-    mission = 15000000,
-    period = 12,
-    budgetDay = 4000;
-    
-console.log(typeof(money));
-console.log(typeof(income));
-console.log(typeof(deposit));
-console.log('addExpenses.length: ', addExpenses.length);
-console.log('Период равен ' + period + 'месяцев');
-console.log('Цель заработать ' + mission + ' рублей/долларов/гривен/юани');
+let num = 266219;
+let arrNum = String(num).split('');
+let summ = arrNum[0];
 
-addExpenses = addExpenses.toLowerCase().split(', ');
+for (let i = 1; i <= arrNum.length - 1; i++) {
+    summ *= Number(arrNum[i]);
+};
 
-console.log('addExpenses.toLowerCase(): ', addExpenses);
-console.log('budgetDay: ', budgetDay);
+summ = summ ** 3;
+
+let arrSumm = String(summ).split('');
+
+console.log(arrSumm[0] + arrSumm[1]);
