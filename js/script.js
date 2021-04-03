@@ -10,6 +10,4 @@ summ = summ ** 3;
 
 console.log('summ: ', summ);
 
-let arrSumm = String(summ).split('');
-
 console.log(String(summ).substr(0, 2));
