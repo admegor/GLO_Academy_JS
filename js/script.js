@@ -13,8 +13,6 @@ const money = +prompt('Ваш месячный доход?'),
     budgetMonth = money - amount1 - amount2,
     budgetDay = Math.floor(budgetMonth / 30);
 
-// if (budgetDay === 0) alert('Ваш доход ' + budgetDay + ' рублей в мясяц, вы что-то делаете не так.');
-
 console.log(typeof(money));
 console.log(typeof(income));
 console.log(typeof(deposit));
@@ -26,6 +24,8 @@ console.log('budgetDay: ', budgetDay);
 console.log('budgetMonth: ', budgetMonth);
 console.log('budgetDay: ', budgetDay);
 console.log('Math.ceil(mission/budgetMonth): ', Math.ceil(mission / budgetMonth));
+
+if (Math.ceil(mission / budgetMonth) === Infinity) alert('Ошибка: ваш месячный доход ' + budgetMonth);
 
 const message = (budgetDay >= 1200) ? 'У вас высокий уровень дохода' :
     (600 <= budgetDay) ? 'У вас средний уровень дохода' :
