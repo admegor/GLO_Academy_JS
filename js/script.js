@@ -4,22 +4,21 @@ let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n)
 }
 
-let money,
-    addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую'),
+let money;
+
+const start = function() {
+    do {
+        money = prompt('Ваш месячный доход?(Укажите число)')
+    }
+    while (!isNumber(money))
+}
+start();
+
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую'),
     deposit = confirm('Есть ли у вас депозит в банке?'),
     income = 'фриланс',
     mission = 1200000, //цель
     period = 12;
-
-const start = function() {
-    money = prompt('Ваш месячный доход?');
-
-    while (!isNumber(money)) {
-        money = prompt('Ваш месячный доход?(Укажите число)');
-    }
-}
-
-start();
 
 function showTypeOf(data) {
     console.log(typeof(data));
@@ -33,18 +32,17 @@ console.log(addExpenses.toLowerCase().split(','));
 let expenses = [];
 
 // Сумма всех обязательных расходов в месяц
-let sum = 0;
 let getExpensesMonth = function() {
+    let sum = 0;
 
     for (let i = 0; i < 2; i++) {
 
         expenses[i] = prompt('Введите обязательную статью расходов?', 'Курсы GLO Academy')
 
-        sum += +prompt('Во сколько это обойдется?');
-
-        while (!isNumber(sum)) {
-            sum += prompt('Во сколько это обойдется?(Укажите число)');
+        do {
+            sum += prompt('Во сколько это обойдется?');
         }
+        while (!isNumber(sum))
     }
 
     console.log('Статья расхода: ', expenses);
