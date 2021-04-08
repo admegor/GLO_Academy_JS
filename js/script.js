@@ -34,8 +34,8 @@ console.log(langArr[lang]);
 
 let namePerson = prompt('Введите имя:');
 
-const message = (namePerson ==='Артем') ? 'директор' : 
-    (namePerson ==='Максим') ? 'преподаватель' : 
+const message = (namePerson === 'Артем') ? 'директор' : 
+    (namePerson === 'Максим') ? 'преподаватель' : 
      'студент';
 
 console.log(message);
