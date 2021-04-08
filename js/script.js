@@ -34,7 +34,7 @@ function getExpensesMonth() {
 
 // Накопления за месяц - расходы
 function getAccumulatedMonth() {
-    return money - amount1 - amount2;
+    return money - getExpensesMonth();
 }
 
 // За какой период будет достингута цель
