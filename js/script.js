@@ -12,6 +12,7 @@ const start = function() {
     }
     while (!isNumber(money))
 }
+
 start();
 
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую'),
@@ -27,31 +28,32 @@ showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
-console.log(addExpenses.toLowerCase().split(','));
-
 let expenses = [];
 
 // Сумма всех обязательных расходов в месяц
 let getExpensesMonth = function() {
     let sum = 0;
-
+    let question;
+    
     for (let i = 0; i < 2; i++) {
-
+        
         expenses[i] = prompt('Введите обязательную статью расходов?', 'Курсы GLO Academy')
-
+        
         do {
-            sum += prompt('Во сколько это обойдется?');
+            question = prompt('Во сколько это обойдется?');
+            if (typeof question === 'number') {
+                sum += question;
+            }
         }
-        while (!isNumber(sum))
+        while (!isNumber(question))
     }
-
+    
     console.log('Статья расхода: ', expenses);
     return sum;
 }
 
 let expensesAmount = getExpensesMonth();
 
-console.log('Расходы в месяц: ', expensesAmount);
 
 // Накопления за месяц - расходы
 function getAccumulatedMonth() {
@@ -68,23 +70,23 @@ function getTargetMonth() {
 
 const budgetDay = Math.floor(accumulatedMonth / 30);
 
-
 if (getTargetMonth() < 0) {
     console.log('Цель не будет достигнута');
 } else {
     console.log('Цель будет достигнута: ', getTargetMonth());
 }
 
-console.log('Дневной бюджет: ', budgetDay);
-
 let getStatusIncome = function() {
     const message = (budgetDay >= 1200) ? 'У вас высокий уровень дохода' :
-        (600 <= budgetDay) ? 'У вас средний уровень дохода' :
-        (0 < budgetDay) ? 'К сожалению у вас уровень дохода ниже среднего' :
-        (budgetDay === 0) ? 'Ваш доход ' + budgetDay + ' рублей в мясяц, вы что-то делаете не так.' :
-        'Что-то пошло не так';
-
+    (600 <= budgetDay) ? 'У вас средний уровень дохода' :
+    (0 < budgetDay) ? 'К сожалению у вас уровень дохода ниже среднего' :
+    (budgetDay === 0) ? 'Ваш доход ' + budgetDay + ' рублей в мясяц, вы что-то делаете не так.' :
+    'Что-то пошло не так';
+    
     return message;
 };
 
+console.log(addExpenses.toLowerCase().split(','));
+console.log('Расходы в месяц: ', expensesAmount);
+console.log('Дневной бюджет: ', budgetDay);
 console.log('Ваш статус: ', getStatusIncome());
